@@ -55,18 +55,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AutoDestruction.cs" />
-     <Compile Include="Assets\Scripts\BombBall.cs" />
-     <Compile Include="Assets\Scripts\BulletBall.cs" />
-     <Compile Include="Assets\Scripts\GameController.cs" />
-     <Compile Include="Assets\Scripts\GameOver.cs" />
-     <Compile Include="Assets\Scripts\GreenBall.cs" />
-     <Compile Include="Assets\Scripts\LifeCounterControlle.cs" />
-     <Compile Include="Assets\Scripts\Movement.cs" />
-     <Compile Include="Assets\Scripts\RedBall.cs" />
-     <Compile Include="Assets\Scripts\RedPacman.cs" />
-     <Compile Include="Assets\Scripts\ScoreAndFase.cs" />
-     <Compile Include="Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Scripts\Balls\AutoDestruction.cs" />
+     <Compile Include="Assets\Scripts\Balls\BombBall.cs" />
+     <Compile Include="Assets\Scripts\Balls\BulletBall.cs" />
+     <Compile Include="Assets\Scripts\Balls\GreenBall.cs" />
+     <Compile Include="Assets\Scripts\Balls\Movement.cs" />
+     <Compile Include="Assets\Scripts\Balls\RedBall.cs" />
+     <Compile Include="Assets\Scripts\Balls\RedPacman.cs" />
+     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\GameOver.cs" />
+     <Compile Include="Assets\Scripts\Controllers\GlobalMenueScript.cs" />
+     <Compile Include="Assets\Scripts\Controllers\LifeCounterControlle.cs" />
+     <Compile Include="Assets\Scripts\Controllers\MainMenuScript.cs" />
+     <Compile Include="Assets\Scripts\Controllers\OptionMenuScript.cs" />
+     <Compile Include="Assets\Scripts\Controllers\ScoreAndFase.cs" />
+     <Compile Include="Assets\Scripts\Controllers\Spawner.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/Bruno/BallGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
