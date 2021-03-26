@@ -271,3 +271,7 @@ C:\Users\Bruno\New Unity Project\obj\Debug\Assembly-CSharp.csproj.CoreCompileInp
 C:\Users\Bruno\New Unity Project\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Bruno\New Unity Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\Bruno\New Unity Project\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Bruno\BallGame\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\Bruno\BallGame\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\BallGame\obj\Debug\Assembly-CSharp.dll
+C:\Users\Bruno\BallGame\obj\Debug\Assembly-CSharp.pdb

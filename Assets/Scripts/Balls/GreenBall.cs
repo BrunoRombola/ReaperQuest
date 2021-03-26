@@ -16,8 +16,11 @@ public class GreenBall : MonoBehaviour
     public void BallEffect()
     {
         Destroy(this.gameObject);
-        gameController.GetComponent<GameController>().score+= 2;
-        gameController.GetComponent<GameController>().quantity--;
-
+        gameController.score.score+= 2;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            BallEffect();
     }
 }

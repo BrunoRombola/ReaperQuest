@@ -18,7 +18,7 @@ public class MainMenuScript: MonoBehaviour
         //title
         title = GameObject.Find("Title");
         title.GetComponent<Text>().color = Color.white;
-        title.GetComponent<Text>().text = "Ball Game";
+        title.GetComponent<Text>().text = "The Reaper Quest";
         title.GetComponent<Text>().fontSize = 28;
         //play
         playButton = GameObject.Find("Play");

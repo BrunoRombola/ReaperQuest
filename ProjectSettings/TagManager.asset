@@ -6,7 +6,10 @@ TagManager:
   tags:
   - GreenBall
   - GameOver
-  - RedBall
+  - Ground
+  - SlowDown
+  - Land
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - UIInterface
   - 
   - 
   - 
@@ -43,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer
+    uniqueID: 4100469897
+    locked: 0
+  - name: New Layer
+    uniqueID: 1771784845
     locked: 0

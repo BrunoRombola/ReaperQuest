@@ -6,88 +6,42 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     //Player Elements
-    public int lifeCounter,score,highScore;
+    public int lifeCounter;
 
+    //Score Elements
+    public ScoreScript score;
     //scene elements
-    int i;
-    public int fase;
-    //GameElements
-    public float createTimer, alarm;
-    public int quantity;
-    [SerializeField] GameObject spawner;
+    public GameObject optionMenu;
     //GameOverElements
-    [SerializeField] Text scoreTitle;
-    [SerializeField] Text scoreText;
-    [SerializeField] Canvas gameOverScreen;
-
-
-    void Start()
+    [SerializeField] GameObject gameOver;
+    //TimerScriptElements
+    public TimerScript timer;
+    void Awake()
     {
-        gameOverScreen.enabled = false;
-        quantity = 0;
-        createTimer = 0f;
-        alarm = 1f;
+        gameOver = GameObject.Find("GameOverElements");
         lifeCounter = 3;
-        score = 0;
-        fase = 1;
-
-    } 
+        score = FindObjectOfType<ScoreScript>();
+        //ScoreElementesInitialization
+        timer = FindObjectOfType<TimerScript>();
+        optionMenu = GameObject.Find("CanvasOptionMenu");
+        optionMenu.GetComponent<Canvas>().enabled = false;
+    }
     void Update()
     {
-        createTimer += Time.deltaTime;
-        if (createTimer > alarm && quantity <10)
-        {
-            i = IndexCalculator();
-            spawner.GetComponent<Spawner>().CreateBall(i);//crea bolas de random
-            createTimer = 0;
-            quantity++;
-        }
-        if (lifeCounter == 0)
-            GameOver();
-    }
-    int IndexCalculator()
-    {
-        if (fase < 3)
-            return (Random.Range(0, fase + 1) % 2);//1roja,2verdes//2rojas,2verdes
-        else if (fase == 3)
-            return ((Random.Range(0, fase + 1) + 1) % 2);//3rojas,2verdes
-        else if (fase == 4)
-            return ((Random.Range(0, fase) + 1) % 2);//3rojas,2verdes+movimiento
-        else if (fase < 8)
-            return ((Random.Range(0, fase) + 1) % 3);
-        else if (fase < 11)
-            return ((Random.Range(0, fase) + 1) % 4);
-       else if (fase >= 12)
-        {
-            if (FindObjectOfType<RedPacman>() == null)
-                return ((Random.Range(0, fase) + 1) % 5);
-            else
-                return ((Random.Range(0, fase) + 1) % 4);
-        }
-        return 0;
+        score.scoreModifier();
+        //spawner.GetComponent<Spawner>().Spawn();
+        if (timer.timer < 0f)
+            gameOver.GetComponentInChildren<GameOver>().ActivateGameOver();
+        timer.UpdateTimerScreen();
     }
 
-    void GameOver()
+    public void Pause()
     {
-        this.gameObject.SetActive(false);
-        gameOverScreen.enabled = true;
-        scoreText.text = score.ToString();
-        scoreTitle.text = "Score";
-
+        Time.timeScale = 0;
+        optionMenu.SetActive(true);
     }
 
-    public int GetMaxScore()
-    {
-        return PlayerPrefs.GetInt("HighScore", 0);
-    }
-    public void SaveScore(int currentScore) 
 
-    {
-        if (currentScore > PlayerPrefs.GetInt("HighScore", 0))
-        {
-            PlayerPrefs.SetInt("HighScore", currentScore);
-            
-        }
-    }
+
 }
 

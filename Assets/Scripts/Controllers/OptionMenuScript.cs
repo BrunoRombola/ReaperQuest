@@ -14,13 +14,11 @@ public class OptionMenuScript : MonoBehaviour
     {
         global = GameObject.Find("Menu").GetComponent<GlobalMenueScript>();
         //audioController
-        
-        //controlador de musica global
-        globalSound = GameObject.Find("GlobalSounds");
-        //controlador de volumen musica
         music = GameObject.Find("Music");
+        music.GetComponentInChildren<Text>().text = "Music";
         //controlador de efectos especiales
         fxSound = GameObject.Find("FX");
+        fxSound.GetComponentInChildren<Text>().text = "FX";
         //controlador back button
         backButton = GameObject.Find("BackButton");
         backButton.GetComponentInChildren<Text>().text = "Back";

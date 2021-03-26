@@ -6,44 +6,62 @@ using UnityEngine.UI;
 
 public class BombBall : MonoBehaviour
 {
-    public int timeLimit;
-    public GameController game;
+    GameController gameController;
     public double time = 1;
+    [SerializeField]double lifeLimit;
+    public bool isAwake = false,isExploded =false;
     // Start is called before the first frame update
     void Start()
     {
-        timeLimit = 5; 
-        game = FindObjectOfType<GameController>();
-        this.gameObject.GetComponentInChildren<Text>().text = timeLimit.ToString();
+
+        gameController = FindObjectOfType<GameController>();
+        lifeLimit = 5;
+        this.gameObject.GetComponentInChildren<Text>().text = lifeLimit.ToString();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
-        if (time <= 0)
+        if (isAwake)
         {
-            timeLimit--;
-            time = 1.00;
+            time -= Time.deltaTime;
+            if (time <= 0)
+            {
+                lifeLimit--;
+                time = 1;
+            }
+            this.gameObject.GetComponentInChildren<Text>().text = lifeLimit.ToString();
         }
-        this.gameObject.GetComponentInChildren<Text>().text = timeLimit.ToString();
-        if(timeLimit == 0)
+        if (lifeLimit <= 0)
+            Explotion();
+        DamageToPlayer();
+
+    }
+    public void Explotion()
+    {
+        isExploded = true;
+        Destroy(this.gameObject);
+    }
+    void DamageToPlayer() 
+    {
+        float radius = 10;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        foreach (var collider in colliders) 
         {
-            BallEffect();
+            if (collider.tag == "Player" && isExploded && !collider.GetComponent<PlayerControllerPC>().shieldOn) 
+            {
+                gameController.score.score -= 2;
+            }
         }
     }
-    public void BallEffect()
+    void OnTriggerEnter2D (Collider2D other)
     {
-        Destroy(this.gameObject);
-        game.GetComponent<GameController>().lifeCounter--;
-        game.quantity--;
+        if (other.CompareTag("Ground"))
+            isAwake = true;
     }
-    public void OnClick()
+    void Animation()
     {
-        Destroy(this.gameObject);
-        game.score++;
-        game.quantity--;
+
     }
-
-
 }
